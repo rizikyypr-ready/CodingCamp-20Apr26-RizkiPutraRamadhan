@@ -1,0 +1,587 @@
+/* ============================================================
+   CSS Custom Properties — Light Theme (default)
+   ============================================================ */
+:root {
+  --color-bg-from:      #7b6fd4;
+  --color-bg-to:        #5b4fcf;
+  --color-surface:      #ffffff;
+  --color-surface-alt:  #f4f4f8;
+  --color-border:       transparent;
+  --color-text:         #1a1a2e;
+  --color-text-muted:   #6b7280;
+  --color-primary:      #5b6ef5;
+  --color-primary-hover:#4a5de0;
+  --color-danger:       #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-success:      #22c55e;
+  --color-error-text:   #dc2626;
+  --color-error-bg:     #fef2f2;
+  --color-shadow:       rgba(0, 0, 0, 0.10);
+  --color-time:         #5b6ef5;
+
+  --radius:    16px;
+  --radius-sm: 10px;
+  --gap:       1.25rem;
+  --font-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ============================================================
+   CSS Custom Properties — Dark Theme
+   ============================================================ */
+[data-theme="dark"] {
+  --color-bg-from:      #1a1a2e;
+  --color-bg-to:        #16213e;
+  --color-surface:      #1e2140;
+  --color-surface-alt:  #252847;
+  --color-border:       transparent;
+  --color-text:         #e8e8f0;
+  --color-text-muted:   #9ca3af;
+  --color-primary:      #7b8cff;
+  --color-primary-hover:#8fa0ff;
+  --color-danger:       #f87171;
+  --color-danger-hover: #ef4444;
+  --color-success:      #4ade80;
+  --color-error-text:   #f87171;
+  --color-error-bg:     #2d1515;
+  --color-shadow:       rgba(0, 0, 0, 0.4);
+  --color-time:         #7b8cff;
+}
+
+/* ============================================================
+   Base Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  background: linear-gradient(135deg, var(--color-bg-from) 0%, var(--color-bg-to) 100%);
+  background-attachment: fixed;
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+  padding: 0.45rem 1rem;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  opacity: 0.88;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"] {
+  font-family: inherit;
+  font-size: 0.9rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1.5px solid #e0e0f0;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.85rem;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input[type="url"] {
+  border-color: #3a3d6e;
+  background-color: var(--color-surface-alt);
+}
+
+input:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(91, 110, 245, 0.18);
+}
+
+/* ============================================================
+   Page Layout
+   ============================================================ */
+#app-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+/* ============================================================
+   Cards (shared surface style)
+   ============================================================ */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 4px 24px var(--color-shadow);
+}
+
+/* ============================================================
+   Top bar (theme toggle)
+   ============================================================ */
+#top-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 0;
+}
+
+#theme-toggle {
+  font-size: 1.2rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+}
+
+#theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+  opacity: 1;
+}
+
+/* ============================================================
+   Greeting Widget — full-width card, centered
+   ============================================================ */
+#greeting-card {
+  text-align: center;
+}
+
+#greeting-time {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-time);
+  font-variant-numeric: tabular-nums;
+}
+
+#greeting-date {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+#greeting-phrase {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  color: var(--color-text);
+}
+
+#greeting-name-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#greeting-name-form input {
+  width: auto;
+  flex: 0 1 200px;
+}
+
+#name-save {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.45rem 1.1rem;
+}
+
+#name-save:hover {
+  background-color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+/* ============================================================
+   Middle row — Timer + Tasks side by side
+   ============================================================ */
+#middle-row {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--gap);
+}
+
+/* ============================================================
+   Timer Widget
+   ============================================================ */
+#timer-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#timer-widget h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  align-self: flex-start;
+}
+
+#timer-display {
+  font-size: 3.8rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--color-time);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin: 0.25rem 0;
+}
+
+#timer-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+#timer-start-stop {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1.4rem;
+}
+
+#timer-start-stop:hover {
+  background-color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+#timer-reset {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+#timer-duration-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  justify-content: center;
+}
+
+#timer-duration-form label {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+#duration-input {
+  width: 4.5rem;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+#duration-save {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.4rem 0.85rem;
+}
+
+#duration-save:hover {
+  background-color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+/* Timer completion flash */
+@keyframes timer-flash {
+  0%, 100% { background-color: var(--color-surface); }
+  50%       { background-color: rgba(91, 110, 245, 0.25); }
+}
+
+#timer-widget.flash {
+  animation: timer-flash 0.4s ease 3;
+}
+
+/* ============================================================
+   Todo Widget
+   ============================================================ */
+#todo-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+#todo-widget h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+#todo-add-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+#todo-add {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.5rem 1.1rem;
+  flex-shrink: 0;
+}
+
+#todo-add:hover {
+  background-color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-alt);
+}
+
+.todo-item input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.todo-item .todo-label {
+  flex: 1;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.todo-item.completed .todo-label {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.todo-item .todo-edit-input {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.todo-item .todo-edit-btn {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.55rem;
+  font-size: 0.78rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.todo-item .todo-delete-btn {
+  background-color: var(--color-danger);
+  color: #fff;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.todo-item .todo-delete-btn:hover {
+  background-color: var(--color-danger-hover);
+  opacity: 1;
+}
+
+/* ============================================================
+   Quick Links Widget — full-width card
+   ============================================================ */
+#links-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+#links-widget h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+#links-add-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+#links-add-form input {
+  flex: 1 1 130px;
+}
+
+#link-add {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.5rem 1.1rem;
+  flex-shrink: 0;
+}
+
+#link-add:hover {
+  background-color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+#links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Each link is a pill button with an inline × badge */
+.link-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 500;
+  padding: 0.45rem 2rem 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.link-btn:hover {
+  background-color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+.link-delete {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.link-delete:hover {
+  background-color: rgba(255, 255, 255, 0.55);
+  opacity: 1;
+}
+
+/* ============================================================
+   Shared Utilities
+   ============================================================ */
+.error {
+  color: var(--color-error-text);
+  font-size: 0.8rem;
+  background-color: var(--color-error-bg);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  width: 100%;
+}
+
+/* ============================================================
+   Responsive — 768px–1023px: stack middle row
+   ============================================================ */
+@media (max-width: 900px) {
+  #middle-row {
+    grid-template-columns: 1fr;
+  }
+
+  #timer-widget {
+    align-items: center;
+  }
+}
+
+/* ============================================================
+   Responsive — < 640px: compact
+   ============================================================ */
+@media (max-width: 639px) {
+  #app-wrapper {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem 1.1rem;
+  }
+
+  #greeting-time {
+    font-size: 2.6rem;
+  }
+
+  #timer-display {
+    font-size: 2.8rem;
+  }
+
+  #greeting-phrase {
+    font-size: 1.3rem;
+  }
+}
+
+/* ============================================================
+   Responsive — < 400px: very small screens
+   ============================================================ */
+@media (max-width: 399px) {
+  #greeting-time {
+    font-size: 2rem;
+  }
+
+  #timer-display {
+    font-size: 2.2rem;
+  }
+
+  #timer-controls {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+}
