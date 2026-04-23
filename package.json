@@ -1,0 +1,11 @@
+{
+  "name": "personal-dashboard",
+  "version": "1.0.0",
+  "description": "Personal dashboard — property and integration tests",
+  "scripts": {
+    "test": "python -m pytest tests/test_properties.py tests/test_integration.py -v",
+    "test:properties": "python -m pytest tests/test_properties.py -v",
+    "test:integration": "python -m pytest tests/test_integration.py -v"
+  },
+  "notes": "Tests use Python/Hypothesis (PBT) because Node.js is not available in this environment. See tests/ directory."
+}
